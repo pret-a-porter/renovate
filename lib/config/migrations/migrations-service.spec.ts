@@ -11,7 +11,7 @@ describe('config/migrations/migrations-service', () => {
       const { isMigrated, migratedConfig } =
         MigrationsService.run(originalConfig);
       expect(isMigrated).toBeTrue();
-      expect(migratedConfig).not.toHaveProperty(property);
+      expect(migratedConfig).toEqual({});
     }
   });
 
@@ -27,8 +27,9 @@ describe('config/migrations/migrations-service', () => {
       const { isMigrated, migratedConfig } =
         MigrationsService.run(originalConfig);
       expect(isMigrated).toBeTrue();
-      expect(migratedConfig).not.toHaveProperty(oldPropertyName);
-      expect(migratedConfig[newPropertyName]).toBe('test');
+      expect(migratedConfig).toEqual({
+        [newPropertyName]: 'test',
+      });
     }
   });
 

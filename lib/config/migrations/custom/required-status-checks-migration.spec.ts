@@ -7,8 +7,9 @@ describe('config/migrations/custom/required-status-checks-migration', () => {
     });
 
     expect(isMigrated).toBeTrue();
-    expect(migratedConfig).not.toHaveProperty('requiredStatusChecks');
-    expect(migratedConfig.ignoreTests).toBeTrue();
+    expect(migratedConfig).toEqual({
+      ignoreTests: true,
+    });
   });
 
   it('migrates empty requiredStatusChecks', () => {
